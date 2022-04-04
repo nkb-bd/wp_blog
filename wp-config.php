@@ -20,13 +20,29 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wp_blog' );
 
-/** Database username */
-define( 'DB_USER', 'root' );
+if (in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'))) {
+    define( 'IS_LIVE', false );
+}else{
+    define( 'IS_LIVE', TRUE );
+}
+if(IS_LIVE){
+    define( 'DB_NAME', 'mdakhlas_wp_blog' );
 
-/** Database password */
-define( 'DB_PASSWORD', 'root' );
+    /** Database username */
+    define( 'DB_USER', 'mdakhlas_wp_blog_user' );
+
+    /** Database password */
+    define( 'DB_PASSWORD', 'mRnssHI-S2Rd' );
+}else{
+    define( 'DB_NAME', 'wp_blog' );
+
+    /** Database username */
+    define( 'DB_USER', 'root' );
+
+    /** Database password */
+    define( 'DB_PASSWORD', 'root' );
+}
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
